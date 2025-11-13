@@ -1,12 +1,10 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/usersModel');
 
-
 const protect = async(req, res, next) =>{
     let token;
         //definir la variable token
-        if (req.headers.authorization 
-            && req.headers.authorization.startsWith("Bearer")){
+        if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
                 try{
                     //obtengo el token del encabezado de autorización
                     token = req.headers.authorization.split(' ')[1]

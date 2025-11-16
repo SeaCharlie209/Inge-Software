@@ -9,9 +9,9 @@ const protect = async(req, res, next) =>{
                     //obtengo el token del encabezado de autorización
                     token = req.headers.authorization.split(' ')[1]
                     //Verifico el token con la firma del secreto
-                    const decoded = jwt.verify(token,process.env.JWT_SECRET)
-                    //busco el usuario con el id del token
-                    req.user = await User.findById(decoded).select('-password')
+                    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+                    // Accede a la propiedad 'id' del payload decodificado
+                    req.user = await User.findById(decoded.id).select('-password')  
 
                     next()
 
